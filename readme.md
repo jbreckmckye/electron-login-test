@@ -1,45 +1,21 @@
-# electron login testbed
+# Electron login testbed
 
-> My impeccable app
+This is a testbed application for Electron-Auth0-Login, scaffolded using https://github.com/sindresorhus/generator-electron.
 
+## Setup
 
-## Install
+1. Clone the app and create a free Auth0 dev account, an Auth0 'native' app (not 'machine to machine'), and at least one user.
+2. In the Auth0 UI whitelist the following redirect URL ('callback URL'): `https://{your-auth0-domain}/mobile`
+3. Copy `.env.example.json` into `.env.json` and fill in all the values.
+4. Run `npm start` to fire up the app.
 
-*macOS 10.10+, Linux, and Windows 7+ are supported (64-bit only).*
+## Testing the plugin
 
-**macOS**
+You can log in using the 'auth' menu. The UI will display your access token, refresh token and expiry time.
 
-[**Download**](https://github.com/jbreckmckye/undefined/releases/latest) the `.dmg` file.
+Make sure you can
 
-**Linux**
-
-[**Download**](https://github.com/jbreckmckye/undefined/releases/latest) the `.AppImage` or `.deb` file.
-
-*The AppImage needs to be [made executable](http://discourse.appimage.org/t/how-to-make-an-appimage-executable/80) after download.*
-
-**Windows**
-
-[**Download**](https://github.com/jbreckmckye/undefined/releases/latest) the `.exe` file.
-
-
----
-
-
-## Dev
-
-Built with [Electron](https://electronjs.org).
-
-### Run
-
-```
-$ npm install
-$ npm start
-```
-
-### Publish
-
-```
-$ npm run release
-```
-
-After Travis finishes building your app, open the release draft it created and click "Publish".
+- [x] Log in as your user
+- [x] Log out as your user
+- [x] Stop and restart the app and still be remembered when refresh tokens enabled
+- [x] Retrieve new auth tokens after token expiry (see the UI)

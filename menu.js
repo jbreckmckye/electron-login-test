@@ -3,58 +3,13 @@ const path = require('path');
 const {app, Menu, shell} = require('electron');
 const {
 	is,
-	appMenu,
-	aboutMenuItem,
-	openUrlMenuItem,
-	openNewGitHubIssue,
-	debugInfo
+	appMenu
 } = require('electron-util');
 const config = require('./config');
 
 const showPreferences = () => {
 	// Show the app's preferences here
 };
-
-const helpSubmenu = [
-	openUrlMenuItem({
-		label: 'Website',
-		url: 'https://github.com/jbreckmckye/undefined'
-	}),
-	openUrlMenuItem({
-		label: 'Source Code',
-		url: 'https://github.com/jbreckmckye/undefined'
-	}),
-	{
-		label: 'Report an Issue…',
-		click() {
-			const body = `
-<!-- Please succinctly describe your issue and steps to reproduce it. -->
-
-
----
-
-${debugInfo()}`;
-
-			openNewGitHubIssue({
-				user: 'jbreckmckye',
-				repo: 'electron-login-testbed',
-				body
-			});
-		}
-	}
-];
-
-if (!is.macos) {
-	helpSubmenu.push(
-		{
-			type: 'separator'
-		},
-		aboutMenuItem({
-			icon: path.join(__dirname, 'static', 'icon.png'),
-			text: 'Created by Jimmy Breck-McKye'
-		})
-	);
-}
 
 const debugSubmenu = [
 	{
@@ -160,10 +115,6 @@ const otherTemplate = [
 	},
 	{
 		role: 'viewMenu'
-	},
-	{
-		role: 'help',
-		submenu: helpSubmenu
 	}
 ];
 
