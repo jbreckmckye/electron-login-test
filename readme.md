@@ -1,11 +1,13 @@
-# Electron login testbed
+# Electron login test
 
-This is a testbed application for Electron-Auth0-Login, scaffolded using https://github.com/sindresorhus/generator-electron.
+This is a test application for [Electron-Auth0-Login](https://github.com/jbreckmckye/electron-auth0-login).
+
+It's meant for manually testing the plugin, but you could also use it as an integration guide. It was scaffolded using https://github.com/sindresorhus/generator-electron.
 
 ## Setup
 
 1. Clone the app and create a free Auth0 dev account, an Auth0 'native' app (not 'machine to machine'), and at least one user.
-2. In the Auth0 UI whitelist the following redirect URL ('callback URL'): `https://{your-auth0-domain}/mobile`
+2. In the Auth0 UI whitelist the following callback URL: `https://{your-auth0-domain}/mobile`
 3. Copy `.env.example.json` into `.env.json` and fill in all the values.
 4. Run `npm start` to fire up the app.
 

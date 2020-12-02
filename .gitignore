@@ -3,3 +3,5 @@ yarn.lock
 /dist
 .editorconfig
 .idea
+.env.json
+

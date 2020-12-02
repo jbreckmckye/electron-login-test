@@ -1,13 +1,10 @@
 {
-	"name": "electron-login-testbed",
-	"productName": "electron login testbed",
+	"name": "electron-login-test",
 	"version": "0.0.0",
-	"description": "My impeccable app",
 	"license": "MIT",
-	"repository": "jbreckmckye/electron-login-testbed",
+	"repository": "jbreckmckye/electron-login-test",
 	"author": {
 		"name": "Jimmy Breck-McKye",
-		"email": "jimmy@breck-mckye.com",
 		"url": "none"
 	},
 	"scripts": {
