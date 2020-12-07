@@ -4,4 +4,4 @@ yarn.lock
 .editorconfig
 .idea
 .env.json
-
+.env
