@@ -1,15 +1,31 @@
 'use strict';
-const path = require('path');
-const {app, Menu, shell} = require('electron');
-const {
-	is,
-	appMenu
-} = require('electron-util');
+const { app, Menu, Notification, shell } = require('electron');
 const config = require('./config');
+const auth = require('./auth');
 
-const showPreferences = () => {
-	// Show the app's preferences here
-};
+function alert (title, body) {
+	new Notification({ title, body }).show();
+}
+
+async function getToken () {
+	try {
+		const token = await auth.getToken();
+		alert('getToken success', `See console`);
+		console.info('Token:', token)
+	} catch (e) {
+		alert('getToken failed', `See console. Error was "${e.message}"`);
+		console.error(e);
+	}
+}
+
+async function logout () {
+	try {
+		await auth.logout();
+		alert('logout success', 'Cool!');
+	} catch (e) {
+		alert(`logout fail. See console. Error was "${e.message}"`);
+	}
+}
 
 const debugSubmenu = [
 	{
@@ -45,86 +61,22 @@ const debugSubmenu = [
 	}
 ];
 
-const macosTemplate = [
-	appMenu([
-		{
-			label: 'Preferences…',
-			accelerator: 'Command+,',
-			click() {
-				showPreferences();
-			}
-		}
-	]),
+module.exports = Menu.buildFromTemplate([
 	{
-		role: 'fileMenu',
+		label: 'electron-auth0-login',
 		submenu: [
 			{
-				label: 'Custom'
+				label: 'Get token',
+				click: getToken
 			},
 			{
-				type: 'separator'
-			},
-			{
-				role: 'close'
+				label: 'Log out',
+				click: logout
 			}
 		]
 	},
 	{
-		role: 'editMenu'
-	},
-	{
-		role: 'viewMenu'
-	},
-	{
-		role: 'windowMenu'
-	},
-	{
-		role: 'help',
-		submenu: helpSubmenu
-	}
-];
-
-// Linux and Windows
-const otherTemplate = [
-	{
-		role: 'fileMenu',
-		submenu: [
-			{
-				label: 'Custom'
-			},
-			{
-				type: 'separator'
-			},
-			{
-				label: 'Settings',
-				accelerator: 'Control+,',
-				click() {
-					showPreferences();
-				}
-			},
-			{
-				type: 'separator'
-			},
-			{
-				role: 'quit'
-			}
-		]
-	},
-	{
-		role: 'editMenu'
-	},
-	{
-		role: 'viewMenu'
-	}
-];
-
-const template = process.platform === 'darwin' ? macosTemplate : otherTemplate;
-
-if (is.development) {
-	template.push({
 		label: 'Debug',
 		submenu: debugSubmenu
-	});
-}
-
-module.exports = Menu.buildFromTemplate(template);
+	}
+]);
