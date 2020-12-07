@@ -13,7 +13,7 @@ async function getToken () {
 		alert('getToken success', `See console`);
 		console.info('Token:', token)
 	} catch (e) {
-		alert('getToken failed', `See console. Error was "${e.message}"`);
+		alert('getToken failed', `See stdout. Error was "${e.message}"`);
 		console.error(e);
 	}
 }
@@ -21,9 +21,9 @@ async function getToken () {
 async function logout () {
 	try {
 		await auth.logout();
-		alert('logout success', 'Cool!');
+		alert('logout success', 'You should now be logged out');
 	} catch (e) {
-		alert(`logout fail. See console. Error was "${e.message}"`);
+		alert(`logout fail. See stdout. Error was "${e.message}"`);
 	}
 }
 
