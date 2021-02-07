@@ -1,12 +1,20 @@
 'use strict';
 
-const ElectronAuth0Login = require('electron-auth0-login').default;
+const keytar = require('keytar');
+const electronAuth0Login = require('electron-auth0-login');
 const env = require('./.env.json');
 
-module.exports = new ElectronAuth0Login({
+module.exports = electronAuth0Login({
 	// Get these from your Auth0 application console
-	auth0Audience: env.auth0Audience,
-	auth0ClientId: env.auth0ClientId,
-	auth0Domain: env.auth0Domain,
-	auth0Scopes: env.auth0Scopes
+	auth0: {
+		audience: env.auth0Audience,
+		clientId: env.auth0ClientId,
+		domain: env.auth0Domain,
+		scopes: env.auth0Scopes
+	},
+	debug: true,
+	refreshTokens: {
+        keytar,
+		appName: 'electron-login-test'
+	}
 });
