@@ -11,13 +11,14 @@
 		"release": "np"
 	},
 	"dependencies": {
-		"electron-auth0-login": "^1.4.0",
+		"electron-auth0-login": "file:../electron-auth0-login",
 		"electron-context-menu": "^0.15.0",
 		"electron-debug": "^3.0.0",
 		"electron-store": "^5.1.0",
 		"electron-unhandled": "^3.0.0",
 		"electron-updater": "^4.0.6",
 		"electron-util": "^0.13.0",
+		"keytar": "7.3.0",
 		"request": "^2.88.2",
 		"request-promise-native": "^1.0.9"
 	},
