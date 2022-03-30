@@ -1,10 +1,10 @@
 'use strict';
 
 const keytar = require('keytar');
-const electronAuth0Login = require('electron-auth0-login');
+const { auth0Login } = require('electron-auth0-login');
 const env = require('./.env.json');
 
-module.exports = electronAuth0Login({
+module.exports = auth0Login({
 	// Get these from your Auth0 application console
 	auth0: {
 		audience: env.auth0Audience,
